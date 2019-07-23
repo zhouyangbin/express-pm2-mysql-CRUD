@@ -1,8 +1,8 @@
 <template>
   <nuxt-link :to="'/recipes/' + id">
     <article class="recipe">
-      <!-- picture -->
-      <div class="thumbnail" :style="{ backgroundImage: 'url('+ thumbnail +')' }"></div>
+      <div class="thumbnail" >
+      </div>
       <!-- title -->
       <h1>{{ title }}</h1>
       <!-- decription -->
@@ -20,7 +20,7 @@ export default {
   },
 
   props: [ 'thumbnail', 'title', 'previewText', 'id' ]
-}
+};
 </script>
 
 <style scoped>

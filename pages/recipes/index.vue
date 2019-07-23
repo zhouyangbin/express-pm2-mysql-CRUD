@@ -22,11 +22,9 @@ export default {
 
 		}
 	},
-
 	components: {
 		Recipe
 	},
-
 	/**
 	 * @description data from server
 	 */
@@ -47,37 +45,12 @@ export default {
 							previewText: 'Awesome vigetable',
 							thumbnail: require('@/assets/images/food2.jpg')
 						},
-						{
-							id: '3',
-							title: 'Delicious sweet corn',
-							previewText: 'Awesome sweet corn',
-							thumbnail: require('@/assets/images/food3.jpg')
-						},
-						{
-							id: '4',
-							title: 'Delicious beef',
-							previewText: 'Awesome beef',
-							thumbnail: require('@/assets/images/food1.jpg')
-						},
-						{
-							id: '5',
-							title: 'Delicious pork',
-							previewText: 'Awesome pork',
-							thumbnail: require('@/assets/images/food2.jpg')
-						},
-						{
-							id: '6',
-							title: 'Delicious pea',
-							previewText: 'Awesome pea',
-							thumbnail: require('@/assets/images/food3.jpg')
-						}
 					]
 				});
 			}, 1500)
 		})
 	},
-
-}
+};
 </script>
 
 <style scoped>
