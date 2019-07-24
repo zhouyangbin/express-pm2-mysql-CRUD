@@ -9,7 +9,7 @@
         recipes demo
       </h1>
       <h2 class="subtitle">
-        My outstanding Nuxt.js project
+       test test test test test test test test test test
       </h2>
     </div>
   </section>
@@ -22,7 +22,7 @@ export default {
   components: {
     Logo
   }
-}
+};
 </script>
 
 <style>

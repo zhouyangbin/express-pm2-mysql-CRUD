@@ -1,0 +1,25 @@
+var express = require("express");
+let app = express();
+
+let { Nuxt, Builder } = require('nuxt');
+
+let config = require('./nuxt.config.js');//nuxt的配置文件
+let nuxt = new Nuxt(config);
+
+app.get("/a",function(req,res){  //自己的路由
+    res.send({a:1});
+});
+
+
+if (config.dev) {// 是否启用开发模式
+    let builder = new Builder(nuxt);
+    builder.build();
+}
+
+app.use(nuxt.render);//自己定义的路由写它上边
+
+// app.listen(3000);
+var port=8085;
+app.listen(port, function () { 
+  console.log('Example app listening on port ' + port + ' !')
+})

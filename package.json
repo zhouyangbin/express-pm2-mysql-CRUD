@@ -8,7 +8,10 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate"
+    "generate": "nuxt generate",
+    "devapp": "set NODE_ENV=dev && node app.js",
+    "proapp": "set NODE_ENV=pro && node app.js",
+    "pm2": "set NODE_ENV=prod && pm2 start processes.json"
   },
   "dependencies": {
     "axios": "^0.19.0",
