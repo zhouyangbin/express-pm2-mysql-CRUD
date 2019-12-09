@@ -18,12 +18,12 @@
   $(function () {
     $('#btn').on('click', function (e) {
       var username = $('input[name=username]').val();
-      $.get('https://api.github.com/users/' + username, function (result) {
+      $.get('http://10.1.66.144:8085/order?username=' + username, function (result) {
         console.log('ajax completed', result);
         var avatar = new Image(80, 80);
         avatar.src = result.avatar_url;
         $('#avatar').append(avatar);
-        $('#username').text(result.login);
+        $('#username').text(result);
         var a = document.createElement('a');
         a.innerHTML = "BLOG"
         a.setAttribute('href', 'http://www.google.com');
