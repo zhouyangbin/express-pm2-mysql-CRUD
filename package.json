@@ -1,21 +1,22 @@
 {
   "name": "recipes",
-  "version": "2.0.0",
-  "description": "My outstanding Nuxt.js project",
-  "author": "allenChinese",
+  "version": "1.0.0",
+  "description": "pm2",
+  "author": "zyb",
   "private": true,
   "scripts": {
     "dev": "nuxt",
-    "build": "nuxt build",
-    "start": "nuxt start",
     "generate": "nuxt generate",
-    "devapp": "set NODE_ENV=dev && node app.js",
+    "start": "set NODE_ENV=dev && node app.js",
+    "nodemon": "set NODE_ENV=dev && nodemon app.js",
     "proapp": "set NODE_ENV=pro && node app.js",
     "pm2": "set NODE_ENV=prod && pm2 start processes.json"
   },
   "dependencies": {
     "axios": "^0.19.0",
-    "nuxt": "^2.0.0"
+    "cookie-parser": "^1.4.4",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.1"
   },
   "devDependencies": {
     "cross-env": "^5.0.1"

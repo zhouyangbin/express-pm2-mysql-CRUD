@@ -1,14 +1,14 @@
 {
   "apps": [
     {
-      "name": "nuxt_demo",
-      "cwd": "/.nuxt/dist",
+      "name": "pm2_app1",
+      // "cwd": "/.nuxt/dist",
       "script": "app.js",
       "log_date_format": "YYYY-MM-DD HH:mm Z",
       "error_file": "",
       "out_file": "",
       "pid_file": "pids/node-geo-api.pid",
-      "instances": 1,
+      "instances": 2,
       "min_uptime": "200s",
       "max_restarts": 10,
       "max_memory_restart": "1M",
