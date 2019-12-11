@@ -23,7 +23,18 @@ app.get('/order', bodyParser.json(), function(req, res){
     if(!req.body) return res.sendStatus(400);
     res.send('welcome, ' + req.query.username);
 })
-
+app.use(function(req, res, next) {
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
+});
+app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+        message: err.message,
+        error: {}
+    });
+});
 // app.use(nuxt.render);//自己定义的路由写它上边
 var port=8085;
 app.listen(port, function () { 

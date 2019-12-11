@@ -2,7 +2,7 @@
   "apps": [
     {
       "name": "pm2_app1",
-      // "cwd": "/.nuxt/dist",
+      "cwd": "./",
       "script": "app.js",
       "log_date_format": "YYYY-MM-DD HH:mm Z",
       "error_file": "",

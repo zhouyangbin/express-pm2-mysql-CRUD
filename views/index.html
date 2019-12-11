@@ -20,14 +20,7 @@
       var username = $('input[name=username]').val();
       $.get('http://10.1.66.144:8085/order?username=' + username, function (result) {
         console.log('ajax completed', result);
-        var avatar = new Image(80, 80);
-        avatar.src = result.avatar_url;
-        $('#avatar').append(avatar);
         $('#username').text(result);
-        var a = document.createElement('a');
-        a.innerHTML = "BLOG"
-        a.setAttribute('href', 'http://www.google.com');
-        $('#blog').append(a);
       })
     });
   });
