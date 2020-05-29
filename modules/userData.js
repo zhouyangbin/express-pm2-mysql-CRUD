@@ -23,6 +23,13 @@ var userData = {
         pool.getConnection(function(err, connection) {
             var param = req.query || req.params;
             connection.query(user.insert, [param.id, param.sex, param.name, param.age], function(err, result) {
+                if (err) {
+                    res.json({
+                        code: '201',
+                        msg: err
+                    });
+                    return;
+                }
                 if (result) {
                     result = 'add'
                 }
@@ -37,19 +44,30 @@ var userData = {
         pool.getConnection(function(err, connection) {
             if (err) {
                 throw err;
+                return;
             }
-            var id = +req.query.id;
-            // let sql = 'DELETE FROM users WHERE id in "${id}"'
-            connection.query(user.delete, id, function(err, result) {
+            var id = req.query.id;
+
+            console.log(id)
+            const sql = `DELETE FROM users WHERE id IN (${id})`
+            connection.query(sql, id, function(err, result) {
                 if (err) {
-                    console.error(err)
+                    res.json({
+                        code: '201',
+                        msg: err
+                    });
+                    return;
                 } else {
                     if (result.affectedRows > 0) {
                         result = 'delete';
+                        json(res, result);
                     } else {
-                        result = undefined;
+                        res.json({
+                            code: '201',
+                            msg: result
+                        });
                     }
-                    json(res, result);
+                    // json(res, result);
                     connection.release();
                 }
             });
@@ -74,7 +92,7 @@ var userData = {
         });
     },
     queryById: function(req, res, next) {
-        var id = +req.query.id;
+        let id = +req.query.id;
         pool.getConnection(function(err, connection) {
             connection.query(user.queryById, id, function(err, result) {
                 if (result != '') {
@@ -86,6 +104,7 @@ var userData = {
                 } else {
                     result = undefined;
                 }
+                // console.log(result.data[0])
                 json(res, result);
                 connection.release();
             });

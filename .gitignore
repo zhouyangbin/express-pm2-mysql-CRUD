@@ -1,7 +1,8 @@
 # dependencies
 node_modules
 
-logs
+logs/
+pids/
 npm-debug.log
 
 # Nuxt build
