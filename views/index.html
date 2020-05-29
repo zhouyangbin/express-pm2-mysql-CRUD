@@ -12,7 +12,7 @@
     <button id="btn">根据ID获取用户</button>
     <div>
         <div id="avatar"></div>
-        <div id="blog">我是
+        <div id="blog">我是xxx
             <span id="username"></span>
         </div>
     </div>
@@ -23,7 +23,7 @@
                 var username = $('input[name=username]').val();
                 $.get(location.origin + '/query?id=' + username, function(result) {
                     console.log('ajax completed', result);
-                    $('#username').text(result.data.name);
+                    $('#username').text(result.data ? result.data.name : result.msg);
                 })
             });
         });
