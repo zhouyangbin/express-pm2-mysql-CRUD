@@ -15,11 +15,7 @@ router.get('/', function(req, res, next) {
 router.get('/adduserData', function(req, res, next) {
     var param = req.query || req.params;
     console.log(param)
-        // if (param.sex) {
     userData.add(req, res, next);
-    // } else {
-    //     json(res);
-    // }
 });
 router.get('/queryAll', function(req, res, next) {
     userData.queryAll(req, res, next);

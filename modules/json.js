@@ -25,7 +25,7 @@ var json = function(res, result) {
         res.json({
             code: '200',
             msg: '查找成功',
-            data: result.data
+            data: result.data[0]
         });
     } else if (result.result != 'undefined' && result.result === 'selectall') {
         res.json({

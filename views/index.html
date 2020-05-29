@@ -9,20 +9,21 @@
 
 <body>
     <input type="text" name="username" />
-    <button id="btn">Get user from Github</button>
+    <button id="btn">根据ID获取用户</button>
     <div>
         <div id="avatar"></div>
-        <div id="username"></div>
-        <div id="blog">我是首页11</div>
+        <div id="blog">我是
+            <span id="username"></span>
+        </div>
     </div>
     <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
     <script>
         $(function() {
             $('#btn').on('click', function(e) {
                 var username = $('input[name=username]').val();
-                $.get('http://10.1.66.144:8085/order?username=' + username, function(result) {
+                $.get(location.origin + '/query?id=' + username, function(result) {
                     console.log('ajax completed', result);
-                    $('#username').text(result);
+                    $('#username').text(result.data.name);
                 })
             });
         });
