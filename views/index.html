@@ -1,36 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <link rel="icon" href="static/bobo.ico" type="image/x-icon" />
-  <title>Ajax - sample</title>
+    <meta charset="UTF-8">
+    <link rel="icon" href="static/bobo.ico" type="image/x-icon" />
+    <title>Ajax - sample</title>
 </head>
+
 <body>
-  <input type="text" name="username" />
-  <button id="btn">Get user from Github</button>
-  <div>
-    <div id="avatar"></div>
-    <div id="username"></div>
-    <div id="blog">我是首页</div>
-  </div>
-  <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-  <script>
-  $(function () {
-    $('#btn').on('click', function (e) {
-      var username = $('input[name=username]').val();
-      $.get('https://api.github.com/users/' + username, function (result) {
-        console.log('ajax completed', result);
-        var avatar = new Image(80, 80);
-        avatar.src = result.avatar_url;
-        $('#avatar').append(avatar);
-        $('#username').text(result.login);
-        var a = document.createElement('a');
-        a.innerHTML = "BLOG"
-        a.setAttribute('href', 'http://www.google.com');
-        $('#blog').append(a);
-      })
-    });
-  });
-  </script>
+    <input type="text" name="username" />
+    <button id="btn">Get user from Github</button>
+    <div>
+        <div id="avatar"></div>
+        <div id="username"></div>
+        <div id="blog">我是首页11</div>
+    </div>
+    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script>
+        $(function() {
+            $('#btn').on('click', function(e) {
+                var username = $('input[name=username]').val();
+                $.get('http://10.1.66.144:8085/order?username=' + username, function(result) {
+                    console.log('ajax completed', result);
+                    $('#username').text(result);
+                })
+            });
+        });
+    </script>
 </body>
+
 </html>
