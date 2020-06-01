@@ -47,8 +47,6 @@ var userData = {
                 return;
             }
             var id = req.query.id;
-
-            console.log(id)
             const sql = `DELETE FROM users WHERE id IN (${id})`
             connection.query(sql, id, function(err, result) {
                 if (err) {
@@ -95,7 +93,14 @@ var userData = {
         let id = +req.query.id;
         pool.getConnection(function(err, connection) {
             connection.query(user.queryById, id, function(err, result) {
-                if (result != '') {
+                if (err) {
+                    res.json({
+                        code: '201',
+                        msg: err
+                    });
+                    connection.release();
+                    return;
+                } else if (result != '') {
                     var _result = result;
                     result = {
                         result: 'select',
@@ -104,7 +109,6 @@ var userData = {
                 } else {
                     result = undefined;
                 }
-                // console.log(result.data[0])
                 json(res, result);
                 connection.release();
             });
