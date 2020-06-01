@@ -21,6 +21,7 @@
         $(function() {
             $('#btn').on('click', function(e) {
                 var id = $('input[name=username]').val();
+                console.log(id)
                 $.get(location.origin + '/query?id=' + id, function(result) {
                     console.log('ajax completed', result);
                     $('#username').text(result.data ? result.data.name : result.msg);

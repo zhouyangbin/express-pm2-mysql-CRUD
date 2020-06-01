@@ -95,10 +95,9 @@ var userData = {
             connection.query(user.queryById, id, function(err, result) {
                 if (err) {
                     res.json({
-                        code: '201',
-                        msg: err
+                        code: '204',
+                        msg: err.sqlMessage
                     });
-                    connection.release();
                     return;
                 } else if (result != '') {
                     var _result = result;
