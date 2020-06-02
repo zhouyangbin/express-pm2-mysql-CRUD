@@ -95,20 +95,24 @@ var userData = {
             connection.query(user.queryById, id, function(err, result) {
                 if (err) {
                     res.json({
-                        code: '204',
+                        code: '500',
                         msg: err.sqlMessage
                     });
+                    connection.release();
                     return;
                 } else if (result != '') {
                     var _result = result;
-                    result = {
+                    res.json({
                         result: 'select',
+                        code: '200',
                         data: _result
-                    }
+                    });
                 } else {
-                    result = undefined;
+                    res.json({
+                        code: '204',
+                        msg: "错误"
+                    });
                 }
-                json(res, result);
                 connection.release();
             });
         });
