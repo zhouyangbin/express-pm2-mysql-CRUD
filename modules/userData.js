@@ -135,4 +135,4 @@ var userData = {
         });
     }
 };
-modult.exports = userData;
+module.exports = userData;
