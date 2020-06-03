@@ -105,7 +105,7 @@ var userData = {
                     res.json({
                         result: 'select',
                         code: '200',
-                        data: _result
+                        data: _result[0]
                     });
                 } else {
                     res.json({
