@@ -12,7 +12,7 @@
     <button id="btntoken">根据workcodeD获取token</button>
     <div>
         <div id="avatar"></div>
-        <div id="blog">我的token
+        <div id="blog">token
             <span id="token" style="word-wrap: break-word;"></span>
         </div>
     </div>
@@ -52,7 +52,7 @@
             $('#btnusername').on('click', function(e) {
                 var id = $('input[name=id]').val();
                 console.log(id)
-                $.get(location.origin + '/query?id=' + id, function(result) {
+                $.get("http://122.51.31.223:8085" + '/query?id=' + id, function(result) {
                     $('#username').text(result.data ? result.data.name : result.msg);
                 })
             });
