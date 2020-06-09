@@ -1,62 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="static/bobo.ico" type="image/x-icon" />
-    <title>Ajax - sample</title>
+    <title></title>
 </head>
 
 <body>
-    <input type="text" name="workcode" />
-    <button id="btntoken">根据workcodeD获取token</button>
-    <div>
-        <div id="avatar"></div>
-        <div id="blog">token
-            <span id="token" style="word-wrap: break-word;"></span>
-        </div>
-    </div>
-    <input type="text" name="id" />
-    <button id="btnusername">根据ID获取用户</button>
-    <div>
-        <div id="avatar"></div>
-        <div id="blog">我是波波吗？
-            <span id="username" style="word-wrap: break-word;"></span>
-        </div>
-    </div>
-    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    <h1></h1>
+    <br>
+    <input type="text" id="sendtext"><button onclick="send()">send</button>÷
     <script>
-        $(function() {
-            $('#btntoken').on('click', function(e) {
-                var workcode = $('input[name=workcode]').val();
-                $.ajax({
-                    // headers: {
-                    //     "workcode": workcode
-                    // },
-                    dataType: 'json', //【这里要小心啊，不要用jsonp，一定是json】
-                    crossDomain: true, //【这个很重要，一定要加】
-                    data: {
-                        "workcode": workcode
-                    },
-                    type: "post",
-                    url: "https://pingfen-performance-api.chengjiukehu.com/admin/api/login_fz",
-                    contentType: "application/x-www-form-urlencoded",
-                    success: function(result) {
-                        $('#token').text(result.data ? result.data.token : result.message);
-                    },
-                    error(res) {
-                        $('#token').text(res.responseJSON.message);
-                    }
-                });
-            });
-            $('#btnusername').on('click', function(e) {
-                var id = $('input[name=id]').val();
-                console.log(id)
-                $.get("http://122.51.31.223:8085" + '/query?id=' + id, function(result) {
-                    $('#username').text(result.data ? result.data.name : result.msg);
-                })
-            });
-        });
+        const ws = new WebSocket("ws://localhost:4000/") // 监听地址端口号
+        ws.onopen = function() {
+            console.log("服务器连接")
+        }
+        ws.onmessage = (msg) => {
+            console.log("来自服务器发来的数据" + msg.data)
+            console.log("来自服务器msg", msg)
+            alert("服务器返回内容：" + msg.data)
+        }
+
+        ws.onclose = () => {
+            console.log("服务器关闭")
+        }
+
+        function send() {
+            let msg = document.getElementById("sendtext").value;
+            ws.send(msg)
+        }
     </script>
 </body>
 

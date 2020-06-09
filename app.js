@@ -13,8 +13,8 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
 //app.use(bodyParser.json({type: 'text/plain'}));
 app.use(bodyParser.json({ type: 'application/*+json' }))
 
-app.use(express.static(path.join(__dirname, 'views'))); //定义首页路径
-app.use('/static', express.static(__dirname + '/static')); //设置静态文件路径
+app.use(express.static(path.join(__dirname, '/app/dist'))); //定义首页路径
+app.use('/static', express.static(__dirname + '/app/dist')); //设置静态文件路径
 app.use(router);
 app.use(function(req, res, next) {
     var err = new Error('Not Found');

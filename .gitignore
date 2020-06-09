@@ -7,7 +7,7 @@ npm-debug.log
 
 # Nuxt build
 .nuxt
-
+/app/node_modules
 # Nuxt generate
 dist
 .DS_Store
