@@ -9,10 +9,13 @@ var router = require("./router")
     //创建application/json解析
 var jsonParser = bodyParser.json();
 //创建application/x-www-form-urlencoded
-var urlencodedParser = bodyParser.urlencoded({ extended: false });
+var urlencodedParser = bodyParser.urlencoded({
+    extended: false
+});
 //app.use(bodyParser.json({type: 'text/plain'}));
-app.use(bodyParser.json({ type: 'application/*+json' }))
-
+app.use(bodyParser.json({
+    type: 'application/*+json'
+}))
 app.use(express.static(path.join(__dirname, '/app/dist'))); //定义首页路径
 app.use('/static', express.static(__dirname + '/app/dist')); //设置静态文件路径
 app.use(router);
