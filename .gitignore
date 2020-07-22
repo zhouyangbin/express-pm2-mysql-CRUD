@@ -9,5 +9,5 @@ npm-debug.log
 .nuxt
 # /app/node_modules
 # Nuxt generate
-dist
+# dist
 .DS_Store

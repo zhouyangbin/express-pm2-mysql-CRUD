@@ -16,8 +16,8 @@ var urlencodedParser = bodyParser.urlencoded({
 app.use(bodyParser.json({
     type: 'application/*+json'
 }))
-app.use(express.static(path.join(__dirname, '/app/dist'))); //定义首页路径
-app.use('/static', express.static(__dirname + '/app/dist')); //设置静态文件路径
+app.use(express.static(path.join(__dirname, '/dist'))); //定义首页路径
+app.use('/static', express.static(__dirname + '/dist')); //设置静态文件路径
 app.use(router);
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
