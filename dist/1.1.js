@@ -129,6 +129,7 @@ webpackJsonp([1],[
 	//
 	//
 	//
+	//
 
 	var _vuex = __webpack_require__(19);
 
@@ -147,7 +148,8 @@ webpackJsonp([1],[
 	      form: {
 	        name: "",
 	        password: ""
-	      }
+	      },
+	      login_error: ""
 	    };
 	  },
 
@@ -159,8 +161,13 @@ webpackJsonp([1],[
 	      // if (!this.form.password || !this.form.name) {
 	      _axios2.default.get("/login?name=" + this.form.name + "&password=" + this.form.password).then(function (res) {
 	        console.log(res.data);
-	        _this.USER_SIGNIN(_this.form);
-	        _this.$router.replace({ path: "/home" });
+	        if (res.data.code == 200) {
+	          _this.login_error = "";
+	          _this.USER_SIGNIN(_this.form);
+	          _this.$router.replace({ path: "/home" });
+	        } else {
+	          _this.login_error = "账号密码错误";
+	        }
 	      });
 	      return;
 	    }
@@ -1796,7 +1803,9 @@ webpackJsonp([1],[
 	        _vm.$set(_vm.form, "password", $event.target.value)
 	      }
 	    }
-	  })]), _vm._v(" "), _c('button', [_vm._v("请登录")])])], 1)
+	  })]), _vm._v(" "), _c('button', [_vm._v("请登录")]), _vm._v(" "), (_vm.login_error) ? _c('div', {
+	    staticClass: "line"
+	  }, [_vm._v(_vm._s(_vm.login_error))]) : _vm._e()])], 1)
 	},staticRenderFns: []}
 	if (false) {
 	  module.hot.accept()
