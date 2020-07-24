@@ -12,25 +12,29 @@
         "max_restarts": 10,
         "max_memory_restart": "300M",
         "cron_restart": "1 0 * * *",
-        "watch": [
-            "./modules",
-            "./router",
-            "./sql_connect",
-            "./views",
-            "./static"
-        ],
-        "ignore_watch": [ // 从监控目录中排除
+        "watch": true,
+        // "watch": [
+        //     "./modules",
+        //     // "./router",
+        //     // "./sql_connect",
+        //     "./views",
+        //     "./static"
+        // ],
+        "ignore_watch": [
             "./node_modules",
             "./logs",
             "./pids"
         ],
+        "watch_options": {
+            "usePolling": true
+        },
         "merge_logs": true,
         "exec_interpreter": "node",
         "exec_mode": "fork",
         "autorestart": false,
         "vizion": false,
         "env": {
-            "NODE_ENV": "development" // 环境参数，当前指定为生产环境
+            "NODE_ENV": "development"
         }
     }]
 }

@@ -19,6 +19,34 @@ var json = require('./json');
 // 使用连接池，提升性能
 var pool = mysql.createPool(poolextend({}, mysqlconfig));
 var userData = {
+    login: function(req, res, next) {
+        pool.getConnection(function(err, connection) {
+            var param = req.query || req.params;
+            connection.query(user.login, [param.name, parseInt(param.password)], function(err, result) {
+                if (err) {
+                    res.json({
+                        code: '201',
+                        msg: err
+                    });
+                    return;
+                }
+                if (!result.length) {
+                    res.json({
+                        code: '201',
+                        msg: err
+                    });
+                    return;
+                }
+                res.json({
+                    code: '200',
+                    data: result[0],
+                    msg: '登录成功4213'
+                });
+                // 释放连接 
+                connection.release();
+            });
+        });
+    },
     add: function(req, res, next) {
         pool.getConnection(function(err, connection) {
             var param = req.query || req.params;

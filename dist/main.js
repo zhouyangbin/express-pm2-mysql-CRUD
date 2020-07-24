@@ -75,7 +75,7 @@
 /******/ 			script.charset = 'utf-8';
 /******/ 			script.async = true;
 
-/******/ 			script.src = __webpack_require__.p + "" + chunkId + "." + ({}[chunkId]||chunkId) + ".js?" + "43d2db4538979b4462c0" + "";
+/******/ 			script.src = __webpack_require__.p + "" + chunkId + "." + ({}[chunkId]||chunkId) + ".js?" + "76ebf2aa61e11b017aad" + "";
 /******/ 			head.appendChild(script);
 /******/ 		}
 /******/ 	};
@@ -118,17 +118,17 @@
 
 	var _routes2 = _interopRequireDefault(_routes);
 
-	var _store = __webpack_require__(38);
+	var _store = __webpack_require__(64);
 
 	var _store2 = _interopRequireDefault(_store);
 
-	var _components = __webpack_require__(39);
+	var _components = __webpack_require__(65);
 
 	var _components2 = _interopRequireDefault(_components);
 
-	__webpack_require__(45);
+	__webpack_require__(71);
 
-	__webpack_require__(48);
+	__webpack_require__(74);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -152,15 +152,20 @@
 	    var _meta$auth = meta.auth,
 	        auth = _meta$auth === undefined ? true : _meta$auth;
 
-	    var isLogin = Boolean(_store2.default.state.user.id); //true用户已登录， false用户未登录
+	    var isLogin = Boolean(_store2.default.state.user.name); //true用户已登录， false用户未登录
 
 	    if (auth && !isLogin && path !== '/login') {
-	        return next({ path: '/login' });
+	        return next({
+	            path: '/login'
+	        });
 	    }
 	    next();
 	});
 
-	new _vue2.default({ store: _store2.default, router: router }).$mount('#app');
+	new _vue2.default({
+	    store: _store2.default,
+	    router: router
+	}).$mount('#app');
 
 /***/ }),
 /* 2 */
@@ -13868,18 +13873,18 @@
 	    }, {
 	        path: '/signout', //退出
 	        component: function component(resolve) {
-	            return __webpack_require__.e/* require */(2, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(22)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this));
+	            return __webpack_require__.e/* require */(2, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(48)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this));
 	        }
 	    }, {
 	        path: '/home', //个人主页
 	        component: function component(resolve) {
-	            return __webpack_require__.e/* require */(3, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(27)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this));
+	            return __webpack_require__.e/* require */(3, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(53)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this));
 	        }
 	    }, {
 	        path: '/', //首页
 	        meta: { auth: false },
 	        component: function component(resolve) {
-	            return __webpack_require__.e/* require */(4, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(32)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this));
+	            return __webpack_require__.e/* require */(4, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(58)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this));
 	        }
 	    }, {
 	        path: '*', //其他页面，强制跳转到登录页面
@@ -15309,7 +15314,33 @@
 /* 35 */,
 /* 36 */,
 /* 37 */,
-/* 38 */
+/* 38 */,
+/* 39 */,
+/* 40 */,
+/* 41 */,
+/* 42 */,
+/* 43 */,
+/* 44 */,
+/* 45 */,
+/* 46 */,
+/* 47 */,
+/* 48 */,
+/* 49 */,
+/* 50 */,
+/* 51 */,
+/* 52 */,
+/* 53 */,
+/* 54 */,
+/* 55 */,
+/* 56 */,
+/* 57 */,
+/* 58 */,
+/* 59 */,
+/* 60 */,
+/* 61 */,
+/* 62 */,
+/* 63 */,
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -15343,7 +15374,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ }),
-/* 39 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15352,7 +15383,7 @@
 	  value: true
 	});
 
-	var _header = __webpack_require__(40);
+	var _header = __webpack_require__(66);
 
 	var _header2 = _interopRequireDefault(_header);
 
@@ -15361,20 +15392,20 @@
 	exports.default = { header: _header2.default };
 
 /***/ }),
-/* 40 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __vue_exports__, __vue_options__
 	var __vue_styles__ = {}
 
 	/* styles */
-	__webpack_require__(41)
+	__webpack_require__(67)
 
 	/* script */
-	__vue_exports__ = __webpack_require__(43)
+	__vue_exports__ = __webpack_require__(69)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(44)
+	var __vue_template__ = __webpack_require__(70)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -15409,13 +15440,13 @@
 
 
 /***/ }),
-/* 41 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(42);
+	var content = __webpack_require__(68);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(12)(content, {});
@@ -15435,7 +15466,7 @@
 	}
 
 /***/ }),
-/* 42 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(11)();
@@ -15449,7 +15480,7 @@
 
 
 /***/ }),
-/* 43 */
+/* 69 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -15503,7 +15534,7 @@
 	};
 
 /***/ }),
-/* 44 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -15525,16 +15556,16 @@
 	}
 
 /***/ }),
-/* 45 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(46);
+	var content = __webpack_require__(72);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(47)(content, {});
+	var update = __webpack_require__(73)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -15551,7 +15582,7 @@
 	}
 
 /***/ }),
-/* 46 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(11)();
@@ -15565,7 +15596,7 @@
 
 
 /***/ }),
-/* 47 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/*
@@ -15817,16 +15848,16 @@
 
 
 /***/ }),
-/* 48 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(49);
+	var content = __webpack_require__(75);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(47)(content, {});
+	var update = __webpack_require__(73)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -15843,7 +15874,7 @@
 	}
 
 /***/ }),
-/* 49 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(11)();

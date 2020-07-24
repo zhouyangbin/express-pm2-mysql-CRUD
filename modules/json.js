@@ -6,6 +6,12 @@ var json = function(res, result) {
             code: '201',
             msg: '错误'
         });
+    } else if (result === 'login') {
+        res.json({
+            code: '200',
+            data: result,
+            msg: '登录成功'
+        });
     } else if (result === 'add') {
         res.json({
             code: '200',
