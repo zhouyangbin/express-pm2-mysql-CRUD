@@ -6,16 +6,24 @@ var Cookies = require('cookie-parser');
 var path = require('path'); /* 重要：目录设置时，可使用其方法引用根目录， 不可少 */
 var app = express();
 var router = require("./router")
-    //创建application/json解析
+app.all('*', function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    res.header('Access-Control-Allow-Methods', '*');
+    // res.header('Content-Type', 'application/json;charset=utf-8');
+    next();
+});
+//创建application/json解析
 var jsonParser = bodyParser.json();
+// app.use(jsonParser);
 //创建application/x-www-form-urlencoded
 var urlencodedParser = bodyParser.urlencoded({
     extended: false
 });
-//app.use(bodyParser.json({type: 'text/plain'}));
 app.use(bodyParser.json({
-    type: 'application/*+json'
-}))
+    type: 'application/json'
+}));
+app.use(urlencodedParser);
 app.use(express.static(path.join(__dirname, '/dist'))); //定义首页路径
 app.use('/static', express.static(__dirname + '/dist')); //设置静态文件路径
 app.use(router);

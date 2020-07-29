@@ -22,7 +22,8 @@ var userData = {
     login: function(req, res, next) {
         pool.getConnection(function(err, connection) {
             var param = req.query || req.params;
-            connection.query(user.login, [param.name, parseInt(param.password)], function(err, result) {
+            console.log(param)
+            connection.query(user.login, [param.name, param.password], function(err, result) {
                 if (err) {
                     res.json({
                         code: '201',
@@ -33,24 +34,25 @@ var userData = {
                 if (!result.length) {
                     res.json({
                         code: '201',
-                        msg: err
+                        msg: result
                     });
                     return;
                 }
                 res.json({
                     code: '200',
                     data: result[0],
-                    msg: '登录成功4213'
+                    msg: '登录成功'
                 });
                 // 释放连接 
                 connection.release();
             });
         });
     },
-    add: function(req, res, next) {
+    regist: function(req, res, next) {
         pool.getConnection(function(err, connection) {
-            var param = req.query || req.params;
-            connection.query(user.insert, [param.id, param.sex, param.name, param.age], function(err, result) {
+            var param = req.body;
+            console.log(param)
+            connection.query(user.checkName, [param.name], function(err, result) {
                 if (err) {
                     res.json({
                         code: '201',
@@ -58,13 +60,32 @@ var userData = {
                     });
                     return;
                 }
-                if (result) {
-                    result = 'add'
+                if (result.length) {
+                    res.json({
+                        code: '201',
+                        data: result,
+                        msg: "已注册"
+                    });
+                    connection.release();
+                    return;
+                } else {
+                    connection.query(user.regist, [param.name, param.password, param.email], function(err, result) {
+                        if (err) {
+                            res.json({
+                                code: '201',
+                                msg: err
+                            });
+                            return;
+                        }
+                        res.json({
+                            code: '200',
+                            data: result[0],
+                            msg: '登录成功'
+                        });
+                        // 释放连接 
+                        connection.release();
+                    });
                 }
-                // 以json形式，把操作结果返回给前台页面
-                json(res, result);
-                // 释放连接 
-                connection.release();
             });
         });
     },

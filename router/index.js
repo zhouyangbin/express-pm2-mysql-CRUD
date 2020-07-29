@@ -19,10 +19,9 @@ router.get('/', function(req, res, next) {
 router.get('/login', function(req, res, next) {
     userData.login(req, res, next);
 });
-router.post('/adduserData', function(req, res, next) {
+router.post('/regist', function(req, res, next) {
     var param = req.query || req.params;
-    console.log(param)
-    userData.add(req, res, next);
+    userData.regist(req, res, next);
 });
 router.get('/queryAll', function(req, res, next) {
     userData.queryAll(req, res, next);

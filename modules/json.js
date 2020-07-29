@@ -15,6 +15,7 @@ var json = function(res, result) {
     } else if (result === 'add') {
         res.json({
             code: '200',
+            data: result,
             msg: '添加成功'
         });
     } else if (result === 'delete') {

@@ -5,7 +5,6 @@
     "author": "zyb",
     "private": true,
     "scripts": {
-        "dev": "nuxt",
         "generate": "nuxt generate",
         "start": "set NODE_ENV=dev && node app.js",
         "nodemon": "set NODE_ENV=dev && nodemon app.js",
