@@ -22,7 +22,7 @@ var userData = {
     login: function(req, res, next) {
         pool.getConnection(function(err, connection) {
             var param = req.query || req.params;
-            console.log(param)
+            // console.log(param)
             connection.query(user.login, [param.name, param.password], function(err, result) {
                 if (err) {
                     res.json({
@@ -51,30 +51,31 @@ var userData = {
     regist: function(req, res, next) {
         pool.getConnection(function(err, connection) {
             var param = req.body;
-            console.log(param)
             connection.query(user.checkName, [param.name], function(err, result) {
                 if (err) {
-                    res.json({
-                        code: '201',
+                    res.status(500).json({
+                        code: '500',
                         msg: err
                     });
+                    connection.release();
                     return;
                 }
                 if (result.length) {
                     res.json({
-                        code: '201',
+                        code: '200',
                         data: result,
                         msg: "已注册"
-                    });
+                    })
                     connection.release();
                     return;
                 } else {
                     connection.query(user.regist, [param.name, param.password, param.email], function(err, result) {
                         if (err) {
-                            res.json({
-                                code: '201',
+                            res.status(500).json({
+                                code: '500',
                                 msg: err
                             });
+                            connection.release();
                             return;
                         }
                         res.json({
