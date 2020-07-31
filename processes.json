@@ -1,6 +1,6 @@
 {
     "apps": [{
-        "name": "pm2_app1",
+        "name": "pm2_server_app",
         "cwd": "./",
         "script": "app.js",
         "log_date_format": "YYYY-MM-DD HH:mm Z",
