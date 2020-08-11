@@ -35,8 +35,8 @@ app.all('*', function(req, res, next) {
 });
 
 app.use(urlencodedParser);
-app.use(express.static(path.join(__dirname, '/dist'))); //定义首页路径
-app.use('/static', express.static(__dirname + '/dist')); //设置静态文件路径
+//app.use(express.static(path.join(__dirname, '/dist'))); //定义首页路径
+//app.use('/static', express.static(__dirname + '/dist')); //设置静态文件路径
 app.use(router);
 app.use(function(err, req, res, next) {
     var err = new Error('Not Found');

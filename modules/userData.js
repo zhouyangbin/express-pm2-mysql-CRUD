@@ -14,37 +14,44 @@ var mysqlconfig = require('./mysqlConfig');
 var poolextend = require('./poolextend');
 // 引入SQL模块
 var user = require('./userSql');
-// 引入json模块
+const User = require("../Sequelize/userModel")
+    // 引入json模块
 var json = require('./json');
 // 使用连接池，提升性能
 var pool = mysql.createPool(poolextend({}, mysqlconfig));
 var userData = {
     login: function(req, res, next) {
-        pool.getConnection(function(err, connection) {
-            var param = req.query || req.params;
-            // console.log(param)
-            connection.query(user.login, [param.name, param.password], function(err, result) {
-                if (err) {
-                    res.json({
-                        code: '201',
-                        msg: err
-                    });
-                    return;
-                }
-                if (!result.length) {
-                    res.json({
-                        code: '201',
-                        msg: result
-                    });
-                    return;
-                }
-                res.json({
-                    code: '200',
-                    data: result[0],
-                    msg: '登录成功'
-                });
-                // 释放连接 
-                connection.release();
+        // pool.getConnection(function(err, connection) {
+        var param = req.query || req.params;
+        // console.log(param)
+        // connection.query(user.login, [param.name, param.password], function(err, result) {
+        //     if (err) {
+        //         res.json({
+        //             code: '201',
+        //             msg: err
+        //         });
+        //         return;
+        //     }
+        //     if (!result.length) {
+        //         res.json({
+        //             code: '201',
+        //             msg: result
+        //         });
+        //         return;
+        //     }
+        //     res.json({
+        //         code: '200',
+        //         data: result[0],
+        //         msg: '登录成功'
+        //     });
+        //     // 释放连接 
+        //     connection.release();
+        // });
+        // });
+        User.findAll().then(users => {
+            res.json({
+                code: '201',
+                data: users
             });
         });
     },
