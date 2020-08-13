@@ -1,6 +1,6 @@
-const text_a1 = require("./text_a1");
+const test_a1 = require("./test_a1");
 const scripts_obj = {
-    'text_a1': text_a1
+    'test_a1': test_a1
 }
 let argumens = process.argv.splice(2);
 // console.log("传递的参数", argumens);
