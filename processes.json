@@ -13,7 +13,7 @@
         "max_restarts": 10,
         "max_memory_restart": "300M",
         "cron_restart": "0 0 2 * *",
-        "exec_mode": "cluster",
+        "exec_mode": "cluster", //集群模式
         "exec_interpreter": "node", //使用的解析器
         "watch": [
             "./modules",

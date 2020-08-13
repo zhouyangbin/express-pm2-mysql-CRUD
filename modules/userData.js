@@ -48,7 +48,11 @@ var userData = {
         //     connection.release();
         // });
         // });
-        User.findAll().then(users => {
+        User.findAll({
+            where: {
+                password: param.password
+            }
+        }).then(users => {
             res.json({
                 code: '201',
                 data: users

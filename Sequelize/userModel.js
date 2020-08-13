@@ -26,4 +26,11 @@ User.init({
     modelName: 'users'
         // 参数
 });
+// User.findAll({
+//     where: {
+//         password: '2'
+//     }
+// }).then(users => {
+//     console.log(users)
+// });
 module.exports = User
