@@ -12,7 +12,9 @@
         "min_uptime": "200s",
         "max_restarts": 10,
         "max_memory_restart": "300M",
-        "cron_restart": "1 0 * * *",
+        "cron_restart": "0 0 2 * *",
+        "exec_mode": "cluster",
+        "exec_interpreter": "node", //使用的解析器
         "watch": [
             "./modules",
             "./router"
@@ -25,8 +27,6 @@
         "watch_options": {
             "usePolling": true
         },
-        "exec_interpreter": "node",
-        "exec_mode": "fork",
         "autorestart": false,
         "vizion": false,
         "env": {
