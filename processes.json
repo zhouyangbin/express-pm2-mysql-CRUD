@@ -1,18 +1,18 @@
 {
     "apps": [{
-        "name": "pm2_server_app",
-        "cwd": "./",
-        "script": "app.js",
+        "name": "pm2_server_app", //名称
+        "cwd": "./", //应用程序所在的目录
+        "script": "app.js", //启动脚本
         "log_date_format": "YYYY-MM-DD HH:mm Z",
         "error_file": "./logs/app-err.log",
         "out_file": "./logs/app-out.lo",
         "pid_file": "pids/node-geo-api.pid",
         "merge_logs": true,
-        "instances": 2,
+        "instances": 2, //启动进程数量
         "min_uptime": "200s",
-        "max_restarts": 10,
+        "max_restarts": 10, //设置应用程序异常退出重启的次数
         "max_memory_restart": "300M",
-        "cron_restart": "0 0 2 * *",
+        "cron_restart": "0 0 2 * *", //定时启动，解决重启能解决的问题
         "exec_mode": "cluster", //集群模式
         "exec_interpreter": "node", //使用的解析器
         "watch": [
@@ -27,8 +27,8 @@
         "watch_options": {
             "usePolling": true
         },
-        "autorestart": false,
-        "vizion": false,
+        "autorestart": false, //启用/禁用应用程序崩溃或退出时自动重启
+        "vizion": false, //启用/禁用vizion特性(版本控制)
         "env": {
             "NODE_ENV": "development"
         }
