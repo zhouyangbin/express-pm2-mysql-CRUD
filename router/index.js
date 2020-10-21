@@ -11,11 +11,11 @@ var path = require('path'); /* 重要：目录设置时，可使用其方法引�
 var userData = require('../modules/userData');
 var json = require('../modules/json');
 let router = express.Router();
-router.get('/', function(req, res, next) {
-    res.render('index', {
-        title: 'SQL for MySQL'
-    });
-});
+// router.get('/', function(req, res, next) {
+//     res.render('index', {
+//         title: 'SQL for MySQL'
+//     });
+// });
 router.get('/login', function(req, res, next) {
     userData.login(req, res, next);
 });
